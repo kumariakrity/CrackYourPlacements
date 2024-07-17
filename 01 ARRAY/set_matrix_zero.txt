@@ -1,0 +1,98 @@
+class Solution {
+public:
+
+    // 1. brute force method which is converting to -1 then to 0 and it fail when -1 is present in matrix......
+            // void matrix_row(vector<vector<int>>& matrix, int i){
+            //     int n = matrix[0].size();
+            //     for(int j=0;j<n;j++){
+            //         if(matrix[i][j]!=0){
+            //             matrix[i][j]=-10;
+            //         }
+            //     }
+            // }
+            // void matrix_column(vector<vector<int>>& matrix, int j){
+            //     int m = matrix.size();
+            //     for(int i=0;i<m;i++){
+            //         if(matrix[i][j]!=0){
+            //             matrix[i][j]=-10;
+            //         }
+            //     }
+            // }
+            // void setZeroes(vector<vector<int>>& matrix) {
+            //     int m = matrix.size();
+            //     int n = matrix[0].size();
+            //     for(int i=0;i<m;i++){
+            //         for(int j=0;j<n;j++){
+                        
+            //             if(matrix[i][j]==0){
+            //                 matrix_row(matrix, i);
+            //                 matrix_column(matrix,j);
+            //             }
+                        
+            //         }
+            //     }
+            //     for(int i=0;i<m;i++){
+            //         for(int j=0;j<n;j++){
+            //             if(matrix[i][j]==-10){
+            //                 matrix[i][j]=0;
+            //             }
+            //         }
+            //     }
+            // }
+
+    // 2. brute force method by taking a new matrix.
+            // void setZeroes(vector<vector<int>>& matrix){
+            //     int m=matrix.size();
+            //     int n=matrix[0].size();
+
+            //     int zero[m][n];
+
+            //     for(int i=0;i<m;i++){
+            //         for(int j=0;j<n;j++){
+            //             if(matrix[i][j]==0){
+            //                 zero[i][j]=0;
+            //             }
+            //             else{
+            //                 zero[i][j]=1;
+            //             }
+            //         }
+            //     }
+            //     for(int i=0;i<m;i++){
+            //         for(int j=0;j<n;j++){
+            //             if(matrix[i][j]==0 && zero[i][j]==0){
+            //                 for(int k=0;k<m;k++){
+            //                     matrix[k][j]=0;
+            //                 }
+            //                 for(int k=0;k<n;k++){
+            //                     matrix[i][k]=0;
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
+
+    // 3. best solution by taking an array for both row & col then mark everything to 0 at end if marked 1.
+            void setZeroes(vector<vector<int>>& matrix){
+                int m=matrix.size();
+                int n=matrix[0].size();
+
+                vector<int> row(m,0);
+                vector<int> column(n,0);
+                for(int i=0;i<m;i++){
+                    for(int j=0;j<n;j++){
+                        if(matrix[i][j]==0){
+                            row[i]=1;
+                            column[j]=1;
+                        }
+                    }
+                }
+                for(int i=0;i<m;i++){
+                    for(int j=0;j<n;j++){
+                        if(row[i] || column[j]){
+                            matrix[i][j]=0;
+                        }
+                    }
+                }
+            }
+
+};

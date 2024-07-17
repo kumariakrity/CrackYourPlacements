@@ -1,0 +1,51 @@
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+
+// done by set...................
+
+        // unordered_set<int> st;
+        // int ans;
+        // for(int i=0;i<nums.size();i++){
+        //     if(st.find(nums[i])!=st.end()){
+        //         ans=nums[i];
+        //         break;
+        //     }
+        //     st.insert(nums[i]);
+        // }
+        // return ans;
+
+
+// done it by unordered_map.................
+
+            // int ans;
+            // unordered_map<int, int> my_map;
+            // for(int i=0;i<nums.size();i++){
+            //     my_map[nums[i]]++;
+            // }
+            // for(int i=0;i<my_map.size();i++){
+            //     if(my_map[nums[i]]>1) {
+            //         ans=nums[i];
+            //         break;
+            //     }
+            // }
+            // return ans;
+
+
+// done by for loop.....................................
+            // int ans;
+            // bool flag=false;
+            // for(int i=0;i<nums.size()-1;i++){
+            //     int min=nums[i];
+            //     for(int j=i+1;j<nums.size();j++){
+            //         if(nums[j]==min) {
+            //             ans=nums[j];
+            //             flag=true;
+            //             break;
+            //         }
+            //     }
+            //     if(flag) break;
+            // }
+            // return ans;
+    }
+};
